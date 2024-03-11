@@ -10,6 +10,8 @@ export default function ArtPiecePage({
   const router = useRouter();
   const slug = router.query.slug;
   const artpiece = artpieces.find((artpiece) => artpiece.slug === slug);
+  const value = artpieces.indexOf((artpiece) => artpiece.slug === slug);
+  console.log("slugValue:", value);
   function handleOnClick() {
     router.push("/art-pieces");
   }
@@ -17,7 +19,7 @@ export default function ArtPiecePage({
     <>
       <ArtPieceDetail artpiece={artpiece} />
       <FavoriteButton
-        favorite={favorties.find((artpiece) => artpiece)}
+        favorite={favorites[value]}
         onToggleFavorite={() => onToggleFavorite(value)}
       />
       <button onClick={handleOnClick}>Back</button>
