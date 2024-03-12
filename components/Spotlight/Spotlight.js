@@ -2,7 +2,6 @@ import ArtPieces from "../ArtPieces/ArtPieces";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import FavoriteButton from "../Favorite/FavoriteButton";
-import Favorite from "../Favorite/Favorite";
 
 export default function Spotlight({ artpieces, onToggleFavorite, favorties }) {
   const [value, setValue] = useState(-1);
@@ -10,7 +9,7 @@ export default function Spotlight({ artpieces, onToggleFavorite, favorties }) {
     setValue(Math.floor(Math.random() * artpieces.length));
     console.log("Use: ", value);
   }, []);
-  // const value = Math.floor(Math.random() * artpieces.length);
+
   if (value === -1) {
     return null;
   }
