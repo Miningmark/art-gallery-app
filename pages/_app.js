@@ -3,6 +3,7 @@ import GlobalStyle from "../styles";
 import useSWR, { SWRConfig } from "swr";
 import Layout from "@/components/Layout/Layout";
 import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const initalFavorite = Array(10).fill(false);
@@ -10,8 +11,12 @@ const initalFavorite = Array(10).fill(false);
 const initalComments = Array(10).fill([]);
 
 export default function App({ Component, pageProps }) {
-  const [favorites, setFavorites] = useState(initalFavorite);
-  const [comments, setComments] = useState(initalComments);
+  const [favorites, setFavorites] = useLocalStorageState("favorites", {
+    defaultValue: initalFavorite,
+  });
+  const [comments, setComments] = useLocalStorageState("comments", {
+    defaultValue: initalComments,
+  });
 
   function handleSetComment(id, newComment) {
     setComments(

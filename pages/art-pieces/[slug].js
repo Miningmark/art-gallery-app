@@ -19,6 +19,7 @@ export default function ArtPiecePage({
   function handleOnClick() {
     router.push("/art-pieces");
   }
+  console.log("comments :", comments);
   return (
     <>
       <ArtPieceDetail artpiece={artpiece} />
