@@ -1,7 +1,17 @@
-export default function FavoritePage() {
+import FavoritePieces from "@/components/Favorite/FavoritePieces";
+
+export default function FavoritePage({
+  artpieces,
+  favorites,
+  onToggleFavorite,
+}) {
   return (
     <>
-      <p></p>
+      <FavoritePieces
+        artpieces={artpieces}
+        favorites={favorites}
+        onToggleFavorite={onToggleFavorite}
+      />
     </>
   );
 }
