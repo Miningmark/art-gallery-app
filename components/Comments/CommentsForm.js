@@ -6,6 +6,7 @@ export default function CommentForm({ onSetComment, index }) {
     if (newComment !== "") {
       onSetComment(index, newComment);
     }
+    event.target.form[0].value = "";
   }
   return (
     <>
