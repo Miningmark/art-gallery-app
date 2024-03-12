@@ -7,8 +7,19 @@ import { useState } from "react";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const initalFavorite = Array(10).fill(false);
 
+const initalComments = Array(10).fill([]);
+
 export default function App({ Component, pageProps }) {
   const [favorites, setFavorites] = useState(initalFavorite);
+  const [comments, setComments] = useState(initalComments);
+
+  function handleSetComment(id, newComment) {
+    setComments(
+      comments.map((comment, index) =>
+        index === id ? [...comment, newComment] : comment
+      )
+    );
+  }
 
   function handleToggleFavorite(id) {
     setFavorites(
@@ -26,6 +37,7 @@ export default function App({ Component, pageProps }) {
 
   // console.log(data);
   console.log(favorites);
+  console.log("comments :", comments);
 
   return (
     <>
@@ -36,6 +48,8 @@ export default function App({ Component, pageProps }) {
           artpieces={data}
           onToggleFavorite={handleToggleFavorite}
           favorites={favorites}
+          onSetComment={handleSetComment}
+          comments={comments}
         />
       </Layout>
     </>
