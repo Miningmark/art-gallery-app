@@ -1,11 +1,26 @@
 import Image from "next/image";
+import styled from "styled-components";
+
+const StyledArtPiece = styled.picture``;
 
 export default function ArtPiecePreview({ image, title, artist }) {
   return (
     <>
       <h2>{title}</h2>
-      <Image alt={title} src={image} width={400} height={400}></Image>
-      <h3>{artist}</h3>
+      <figure>
+        <Image
+          alt={title}
+          src={image}
+          sizes="70vh"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          width={500}
+          height={300}
+        ></Image>
+        <figcaption>Artist: {artist}</figcaption>
+      </figure>
     </>
   );
 }

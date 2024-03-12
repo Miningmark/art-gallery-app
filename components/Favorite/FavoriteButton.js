@@ -1,14 +1,22 @@
 import Heart from "./heart.svg";
+import styled from "styled-components";
 
 const likedHeart = <Heart height={30} width={30} fill="red" />;
-const unlikeHeart = <Heart height={30} width={30} fill="black" />;
+const unlikeHeart = (
+  <Heart height={30} width={30} fill="transparent" stroke="white" />
+);
+
+const StyledHeart = styled.button`
+  background-color: transparent;
+  border: none;
+`;
 
 export default function FavoriteButton({ favorite, onToggleFavorite }) {
   return (
     <>
-      <button onClick={onToggleFavorite}>
+      <StyledHeart onClick={onToggleFavorite}>
         {favorite ? likedHeart : unlikeHeart}
-      </button>
+      </StyledHeart>
     </>
   );
 }

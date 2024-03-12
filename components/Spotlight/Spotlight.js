@@ -2,6 +2,7 @@ import ArtPieces from "../ArtPieces/ArtPieces";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import FavoriteButton from "../Favorite/FavoriteButton";
+import styled from "styled-components";
 
 export default function Spotlight({ artpieces, onToggleFavorite, favorties }) {
   const [value, setValue] = useState(-1);
@@ -21,12 +22,20 @@ export default function Spotlight({ artpieces, onToggleFavorite, favorties }) {
   return (
     <>
       <h2>{randomImage.name}</h2>
-      <Image
-        src={randomImage.imageSource}
-        alt={randomImage.name}
-        width={100}
-        height={100}
-      />
+      <figure>
+        <Image
+          alt={randomImage.name}
+          src={randomImage.imageSource}
+          sizes="70vh"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          width={500}
+          height={300}
+        ></Image>
+        <figcaption>Artist: {randomImage.artist}</figcaption>
+      </figure>
       <FavoriteButton
         favorite={favorties[value]}
         onToggleFavorite={() => onToggleFavorite(value)}
